@@ -2,12 +2,12 @@
 // below is an example of an array of objects, where each object represents a person:
 
 const people = [
-  { name: { first: 'Alyssa', middle: 'P.', last: 'Hacker' }, age: 26 },
-  { name: { first: 'Ben', last: 'Bitdiddle' }, age: 34 },
-  { name: { first: 'Eva', middle: 'Lu', last: 'Ator' }, age: 40 },
-  { name: { first: 'Lem', middle: 'E.', last: 'Tweakit' }, age: 45 },
-  { name: { first: 'Louis', last: 'Reasoner' }, age: 21 },
-  { name: { first: 'Shahan', middle: 'Haig', last: 'Krakirian' }, age: 21 },
+  { name: { first: "Alyssa", middle: "P.", last: "Hacker" }, age: 26 },
+  { name: { first: "Ben", last: "Bitdiddle" }, age: 34 },
+  { name: { first: "Eva", middle: "Lu", last: "Ator" }, age: 40 },
+  { name: { first: "Lem", middle: "E.", last: "Tweakit" }, age: 45 },
+  { name: { first: "Louis", last: "Reasoner" }, age: 21 },
+  { name: { first: "Shahan", middle: "Haig", last: "Krakirian" }, age: 21 },
 ];
 
 //-------------------------------------------------
@@ -18,6 +18,11 @@ const people = [
 
 function avgAge(peopleArr) {
   // return something
+  let sumAge = null;
+  peopleArr.forEach((person) => {
+    sumAge += person.age;
+  });
+  return Math.round(sumAge / peopleArr.length);
 }
 
 console.log(`Average age is ${avgAge(people)}.`);
@@ -32,6 +37,11 @@ console.log(`Average age is ${avgAge(people)}.`);
 
 function fullName(peopleArr) {
   // return something
+
+  let fullNameArr = peopleArr.map((person) => {
+    return `${person.name.first} ${person.name.last}`;
+  });
+  return fullNameArr;
 }
 
 console.log(fullName(people));
@@ -45,6 +55,13 @@ console.log(fullName(people));
 
 function olderPeople(peopleArr, age) {
   // return something
+  let elders = [];
+  peopleArr.forEach((person) => {
+    if (person["age"] > age) {
+      elders.push(person);
+    }
+  });
+  return elders;
 }
 
 console.log(olderPeople(people, 26));
